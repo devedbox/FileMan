@@ -55,12 +55,7 @@ extension Path {
     }
     
     public static var current: Path {
-        get {
-            return Path(_path: FileManager.default.currentDirectoryPath)
-        }
-        set {
-            FileManager.default.currentDirectoryPath = newValue._path
-        }
+        return Path(_path: FileManager.default.currentDirectoryPath)
     }
     
     public var kind: Kind {
