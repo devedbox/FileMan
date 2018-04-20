@@ -24,6 +24,10 @@ let package = Package(
             name: "Path",
             dependencies: []),
         .testTarget(
+            name: "PathTests",
+            dependencies: ["Path"],
+            path: "Tests/PathTests"),
+        .testTarget(
             name: "FilemanTests",
             dependencies: ["Fileman"]),
     ]
