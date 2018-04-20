@@ -18,7 +18,7 @@ extension Path {
     /// The Kind of the `Path`.
     public enum Kind {
         /// Case indicates path `.`.
-        case `self`
+        case this
         /// Case indicates path `..`.
         case `super`
         /// Case indicates path `path`.
@@ -32,10 +32,16 @@ extension Path.Kind: CustomStringConvertible {
     /// Returns the value of the `Path.Kind`.
     public var description: String {
         switch self {
-        case .self: return "."
+        case .this: return "."
         case .super: return ".."
         case .path(let path): return path
         }
+    }
+}
+
+extension Path.Kind: Equatable {
+    public static func == (lhs: Path.Kind, rhs: Path.Kind) -> Bool {
+        return lhs.description == rhs.description
     }
 }
 
@@ -61,7 +67,7 @@ extension Path {
     public var kind: Kind {
         switch _path {
         case ".":
-            return .self
+            return .this
         case "..":
             return .super
         default:
