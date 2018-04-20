@@ -8,6 +8,16 @@ final class PathTests: XCTestCase {
     
     func testThisPath() {
         let path: Path = "."
-        XCTAssertEqual(path.kind, Path.Kind.this)
+        XCTAssertEqual(path.kind, .this)
+    }
+    
+    func testSuperPath() {
+        let path = ".." as Path
+        XCTAssertEqual(path.kind, .super)
+    }
+    
+    func testNormalPath() {
+        let path = "/User/Current/Docs" as Path
+        XCTAssertEqual(path.kind, .path("/User/Current/Docs"))
     }
 }
