@@ -46,7 +46,14 @@ public struct Path {
     private(set) var _path: String = ""
 }
 
+// MARK: -
+
 extension Path {
+    /// Returns the root path of the file system.
+    public static var root: Path {
+        return Path(_path: "/")
+    }
+    
     public static var curren: Path {
         return Path(_path: FileManager.default.currentDirectoryPath)
     }
@@ -60,6 +67,28 @@ extension Path {
         default:
             return .path(_path)
         }
+    }
+}
+
+// MARK: -
+
+extension Path {
+    public static func environments(`for` key: String) -> [String] {
+        let env_paths = getenv(key)
+        let char_env_paths = unsafeBitCast(env_paths, to: UnsafePointer<CChar>.self)
+    #if swift(>=4.1)
+        return
+            String(validatingUTF8: char_env_paths)?
+                .split(separator: ":")
+                .compactMap { String($0) }
+                ?? []
+    #else
+        return
+            String(validatingUTF8: char_env_paths)?
+                .split(separator: ":")
+                .flatMap { String($0) }
+                ?? []
+    #endif
     }
 }
 
