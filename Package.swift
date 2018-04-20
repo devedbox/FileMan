@@ -4,10 +4,10 @@
 import PackageDescription
 
 let package = Package(
-    name: "FileMan",
+    name: "Fileman",
     products: [
         // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(name: "FileMan",targets: ["FileMan"]),
+        .library(name: "Fileman",targets: ["Fileman"]),
         .library(name: "Path", targets: ["Path"]),
     ],
     dependencies: [
@@ -18,13 +18,13 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
-            name: "FileMan",
+            name: "Fileman",
             dependencies: []),
         .target(
             name: "Path",
             dependencies: []),
         .testTarget(
-            name: "FileManTests",
-            dependencies: ["FileMan"]),
+            name: "FilemanTests",
+            dependencies: ["Fileman"]),
     ]
 )
