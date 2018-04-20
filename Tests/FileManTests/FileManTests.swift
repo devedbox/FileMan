@@ -1,12 +1,12 @@
 import XCTest
-@testable import FileMan
+@testable import Fileman
 
-final class FileManTests: XCTestCase {
+final class FilemanTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(FileMan().text, "Hello, World!")
+        XCTAssertEqual(Fileman().text, "Hello, World!")
     }
 
 
